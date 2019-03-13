@@ -9,9 +9,24 @@ namespace ATM
 {
     class Calculator : ICalculator
     {
-        public List<Plane> FindPlanes(List<Plane> missing_name)
+        public List<Plane> ComparePlanes(List<Plane> newPlanes)
         {
-            throw new NotImplementedException();
+            if (_planes.Count != 0)
+            {
+                foreach (var i in newPlanes)
+                {
+                    foreach (var j in _planes)
+                    {
+                        if (i.Tag == j.Tag)
+                        {
+                            CalculateVelocity(i,j);
+                            CalculateCourse(j, i);
+                        }
+                    }
+                }
+            }
+            _planes = newPlanes;
+            return _planes;
         }
 
         public void CalculateVelocity(Plane planeNew, Plane planeOld)
