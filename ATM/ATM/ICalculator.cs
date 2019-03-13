@@ -9,7 +9,7 @@ namespace ATM
     interface ICalculator
     {
         List<Plane> FindPlanes(List<Plane>);
-        void CalculateVelocity(Plane);
+        void CalculateVelocity(Plane, Plane);
         void CalculateCourse(Plane);
     }
 
