@@ -8,8 +8,8 @@ namespace ATM
 {
     interface ICalculator
     {
-        List<Plane> ComparePlanes(List<Plane>);
-        void CalculateVelocity(Plane, Plane);
-        void CalculateCourse(Plane, Plane);
+        List<Plane> ComparePlanes(List<Plane> planes);
+        void CalculateVelocity(Plane planeNew, Plane planeOld);
+        void CalculateCourse(Plane planeOld, Plane planeNew);
     }
 }
