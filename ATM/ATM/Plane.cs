@@ -16,9 +16,13 @@ namespace ATM
 
         public double Altitude { get; }
 
-        public DateTime Timestamp { get; set; }
+        public double Timestamp { get; }
 
-        public Plane(String tag, double positionX, double positionY, double altitude, DateTime timestamp)
+        public double HorizontalVelocity { get; set; }
+
+        public double CompassCourse { get; set; }
+
+        public Plane(String tag, double positionX, double positionY, double altitude, double timestamp)
         {
             Tag = tag;
             PositionX = positionX;
