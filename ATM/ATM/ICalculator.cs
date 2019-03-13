@@ -10,7 +10,7 @@ namespace ATM
     {
         List<Plane> FindPlanes(List<Plane>);
         void CalculateVelocity(Plane, Plane);
-        void CalculateCourse(Plane);
+        void CalculateCourse(Plane, Plane);
     }
 
 

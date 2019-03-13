@@ -16,24 +16,28 @@ namespace ATM
 
         public void CalculateVelocity(Plane planeNew, Plane planeOld)
         {
-            double x = PlaneNew.PositionX - PlaneOld.PositionX;
+            double x = planeNew.PositionX - planeOld.PositionX;
 
             if (x < 0)
                 x = x * (-1);
 
-            double y = PlaneNew.PositionY - PlaneOld.PositionY;
+            double y = planeNew.PositionY - planeOld.PositionY;
 
             if (y < 0)
                 y = y * (-1);
 
-            double time = PlaneOld.TimeStamp - PlaneNew.TimeStamp;
+            double time = planeOld.Timestamp - planeNew.Timestamp;
 
-            PlaneNew.HorizontalVelocity = (Math.Sqrt((x * x) + (y * y)) / time);
+            planeNew.HorizontalVelocity = (Math.Sqrt((x * x) + (y * y)) / time);
         }
 
-        public void CalculateCourse(Plane missing_name)
+        public void CalculateCourse(Plane planeOld, Plane planeNew)
         {
+            double x = planeOld.PositionX - planeNew.PositionX;
+            double y = planeNew.PositionY - planeOld.PositionY;
+            double m = y / x;
 
+            planeNew.CompassCourse = Math.Atan(m);
         }
 
         private List<Plane> _planes;
