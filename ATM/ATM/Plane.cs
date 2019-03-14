@@ -8,21 +8,21 @@ namespace ATM
 {
    public class Plane
     {
-        public String Tag { get; }
+        public String Tag { get; set; }
 
-        public double PositionX { get; }
+        public double PositionX { get; set; }
 
-        public double PositionY { get;}
+        public double PositionY { get; set; }
 
-        public double Altitude { get; }
+        public double Altitude { get; set; }
 
-        public double Timestamp { get; }
+        public DateTime Timestamp { get; set; }
 
         public double HorizontalVelocity { get; set; }
 
         public double CompassCourse { get; set; }
 
-        public Plane(String tag, double positionX, double positionY, double altitude, double timestamp)
+        public Plane(String tag, double positionX, double positionY, double altitude, DateTime timestamp)
         {
             Tag = tag;
             PositionX = positionX;
@@ -30,5 +30,7 @@ namespace ATM
             Altitude = altitude;
             Timestamp = timestamp;
         }
+
+        
     }
 }

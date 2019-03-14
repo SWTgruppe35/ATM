@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ICalculator
+    public interface ICalculator
     {
         List<Plane> ComparePlanes(List<Plane> planes);
         void CalculateVelocity(Plane planeNew, Plane planeOld);

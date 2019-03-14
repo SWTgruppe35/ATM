@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Calculator : ICalculator
+    public class Calculator : ICalculator
     {
         public List<Plane> ComparePlanes(List<Plane> newPlanes)
         {
             if (_planes.Count != 0)
             {
                 foreach (var i in newPlanes)
-                {
+                {   
                     foreach (var j in _planes)
                     {
                         if (i.Tag == j.Tag)
@@ -41,7 +41,7 @@ namespace ATM
             if (y < 0)
                 y = y * (-1);
 
-            double time = planeOld.Timestamp - planeNew.Timestamp;
+            double time = (planeOld.Timestamp - planeNew.Timestamp).TotalMilliseconds;
 
             planeNew.HorizontalVelocity = (Math.Sqrt((x * x) + (y * y)) / time);
         }
