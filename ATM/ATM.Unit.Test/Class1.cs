@@ -14,19 +14,26 @@ namespace ATM.Unit.Test
     public class ATMWithEventsUnitTests
     {
         private ICalculator _uut;
-        private Plane _planeNew;
-        private Plane _planeOld;
+        private List<Plane> _newPlane;
+        private List<Plane> _oldPlane;
+        private Plane _Plane1;
+        private Plane _Plane2;
 
-        
+
 
 
         [SetUp]
         public void Setup()
         {
-           
+            _uut = new Calculator();
 
         }
 
+        [Test]
+        public void CalcuateFromOnePointEqualsZero()
+        {
+            _Plane1 = new Plane();
+        }
 
     }
 }
