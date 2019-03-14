@@ -10,13 +10,14 @@ using NSubstitute;
 
 namespace ATM.Unit.Test
 {
+    [TestFixture]
     class AirSpaceMonitorTest
     {
-        [TestFixture]
-        public class ATMWithEventsUnitTests
-        {
+        
+        
+        
             private IAirSpaceMonitor _uut;
-
+      
 
 
             [SetUp]
@@ -29,9 +30,9 @@ namespace ATM.Unit.Test
             [Test]
             public void AltitudeTooLow()
             {
-                _
+                    _
             }
 
-        }
+        
     }
 }
