@@ -53,7 +53,8 @@ namespace ATM.Unit.Test
                 _Plane2
             };
 
-            
+            _uut.CalculateCourse(_Plane1, _Plane2);
+            Assert.That(_Plane1.CompassCourse, Is.EqualTo(0));
         }   
 
     }
