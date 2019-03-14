@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface IAirSpaceMonitor
+    interface IAirSpaceMonitor
     {
         List<Plane> Monitor(List<Plane> planes);
     }
