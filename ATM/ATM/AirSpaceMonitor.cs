@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 namespace ATM
 {
    public class AirSpaceMonitor: IAirSpaceMonitor
-    {
-
-        private List<Plane> _planes = new List<Plane>();
-
-        public void Monitor()
+   {
+        public List<Plane> Monitor(List<Plane> planes)
         {
-            foreach (var plane in _planes)
+            foreach (var plane in planes)
             {
                 if (plane.PositionX >80000 || plane.PositionY > 80000 || plane.Altitude < 500 || plane.Altitude > 20000)
                 {
-                    _planes.Remove(plane);
+                    planes.Remove(plane);
                 }
             }
+
+            return planes;
         }
     }
 }
