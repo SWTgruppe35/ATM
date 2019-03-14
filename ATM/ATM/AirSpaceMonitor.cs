@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ATM
 {
-    class AirSpaceMonitor: IAirSpaceMonitor
+   public class AirSpaceMonitor: IAirSpaceMonitor
     {
 
         private List<Plane> _planes = new List<Plane>();
