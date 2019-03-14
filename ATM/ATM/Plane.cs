@@ -8,15 +8,15 @@ namespace ATM
 {
    public class Plane
     {
-        public String Tag { get; }
+        public String Tag { get; set; }
 
-        public double PositionX { get; }
+        public double PositionX { get; set; }
 
-        public double PositionY { get;}
+        public double PositionY { get; set; }
 
-        public double Altitude { get; }
+        public double Altitude { get; set; }
 
-        public double Timestamp { get; }
+        public double Timestamp { get; set; }
 
         public double HorizontalVelocity { get; set; }
 
