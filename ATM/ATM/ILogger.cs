@@ -8,6 +8,6 @@ namespace ATM
 {
     interface ILogger
     {
-        
+        void LogConflictingPlanes(Plane, Plane);
     }
 }
