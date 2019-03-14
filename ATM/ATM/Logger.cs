@@ -8,9 +8,9 @@ namespace ATM
 {
     class Logger: ILogger
     {
-        public void LogConflictingPlanes(Plane plane1, Plane plane2)
+        public void LogConflictingPlanes(Plane plane1)
         {
-            string[] file = {plane1.Tag, plane2.Tag};
+            string[] file = {plane1.Tag};
             System.IO.File.WriteAllLines(@"C:\Users\Tobias\source\repos\SWTgruppe35\ATM\ATM\LogFile.txt", file);
         }
     }
