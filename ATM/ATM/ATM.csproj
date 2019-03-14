@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="AirSpaceMonitor.cs" />
     <Compile Include="IAirSpaceMonitor.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="PlaneTracker.cs" />
     <Compile Include="Calculator.cs" />
