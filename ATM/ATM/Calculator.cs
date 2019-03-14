@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Calculator : ICalculator
+    public class Calculator : ICalculator
     {
         public List<Plane> ComparePlanes(List<Plane> newPlanes)
         {
