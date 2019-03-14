@@ -30,5 +30,7 @@ namespace ATM
             Altitude = altitude;
             Timestamp = timestamp;
         }
+
+        
     }
 }
