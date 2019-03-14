@@ -10,7 +10,13 @@ namespace ATM
     {
         public void FindConflictingPlanes(List<Plane> planes)
         {
-
+            foreach (var i in _conflictingPlanes)
+            {
+                foreach (var j in _conflictingPlanes)
+                {
+                    
+                }
+            }
         }
 
         public void CheckIfLogged(Plane plane)
