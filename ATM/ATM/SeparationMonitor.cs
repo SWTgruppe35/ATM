@@ -12,14 +12,17 @@ namespace ATM
         {
             List<Plane> newPlanes=new List<Plane>();
             for (int i=0; i<planes.Count;i++)
+
             {
                 for (int j=i+1; j < planes.Count; j++)
                 {
-                    if (CheckConflictingPlanes(planes[i], planes[j]))
+
+                    if (CheckIfConflict(planes[i], planes[j]))
                     {
                         newPlanes.Add(planes[i]);
                         LogPlane(planes[i]);
                     }
+
                 }
             }
 
@@ -40,7 +43,7 @@ namespace ATM
             //log.LogConflictingPlanes(plane);
         }
 
-        public bool CheckConflictingPlanes(Plane plane1, Plane plane2)
+        public bool CheckIfConflict(Plane plane1, Plane plane2)
         {
             double x = plane1.PositionX - plane2.PositionX;
 
@@ -52,11 +55,11 @@ namespace ATM
             if (y < 0)
                 y = y * (-1);
 
-            double distanceHorizontal = Math.Sqrt((x * x) + (y * y));
-            double distanceVertical = plane1.Altitude - plane2.Altitude;
-            if (distanceVertical < 0)
-                distanceVertical = distanceVertical * (-1);
-            if (distanceHorizontal < 5000 && distanceVertical < 300)
+            double HorizontalD = Math.Sqrt((x * x) + (y * y));
+            double VerticalD = plane1.Altitude - plane2.Altitude;
+            if (VerticalD < 0)
+                VerticalD = VerticalD * (-1);
+            if (HorizontalD < 5000 && VerticalD < 300)
                 return true;
             else
                 return false;
