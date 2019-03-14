@@ -9,7 +9,7 @@ namespace ATM
     interface IMonitor
     {
         void FindConflictingPlanes(List<Plane>);
-        void CheckIfLogged(Plane);
+        void LogPlane(Plane);
 
         bool CheckConflictingPlanes(Plane, Plane);
 

@@ -10,19 +10,25 @@ namespace ATM
     {
         public void FindConflictingPlanes(List<Plane> planes)
         {
-
-            foreach (var i in _conflictingPlanes)
+            List<Plane> newPlanes=new List<Plane>();
+            for (int i=0; i<planes.Count;i++)
             {
-                foreach (var j in _conflictingPlanes)
+                for (int j=i+1; j < planes.Count; j++)
                 {
-                    if(CheckConflictingPlanes(i,j))
-
-                        
+                    if (CheckConflictingPlanes(planes[i], planes[j]))
+                    {
+                        newPlanes.Add(planes[i]);
+                        LogPlane(planes[i]);
+                    }
                 }
             }
+
+            _conflictingPlanes = newPlanes;
+
+            //somehow call render with new conflicting planes to render
         }
 
-        public void CheckIfLogged(Plane plane)
+        public void LogPlane(Plane plane)
         {
             foreach (var i in _conflictingPlanes)
             {
