@@ -11,5 +11,7 @@ namespace ATM
         void FindConflictingPlanes(List<Plane>);
         void CheckIfLogged(Plane);
 
+        bool CheckConflictingPlanes(Plane, Plane);
+
     }
 }
