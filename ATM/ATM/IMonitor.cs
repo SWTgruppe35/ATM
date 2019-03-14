@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface ILogger
+    interface IMonitor
     {
-        void LogConflictingPlanes(Plane);
+        void FindConflictingPlanes(List<Plane>);
+        void CheckIfLogged(Plane);
+
     }
 }
