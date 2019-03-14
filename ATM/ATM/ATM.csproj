@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ILogger.cs" />
+    <Compile Include="IMonitor.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="PlaneTracker.cs" />

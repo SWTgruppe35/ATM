@@ -14,7 +14,7 @@ namespace ATM
             if (_planes.Count != 0)
             {
                 foreach (var i in newPlanes)
-                {
+                {   
                     foreach (var j in _planes)
                     {
                         if (i.Tag == j.Tag)
