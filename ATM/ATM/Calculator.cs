@@ -33,15 +33,9 @@ namespace ATM
         {
             double x = planeNew.PositionX - planeOld.PositionX;
 
-            if (x < 0)
-                x = x * (-1);
-
             double y = planeNew.PositionY - planeOld.PositionY;
 
-            if (y < 0)
-                y = y * (-1);
-
-            double time = (planeOld.Timestamp - planeNew.Timestamp).TotalMilliseconds;
+            double time = (planeNew.Timestamp - planeOld.Timestamp).TotalSeconds;
 
             planeNew.HorizontalVelocity = (Math.Sqrt((x * x) + (y * y)) / time);
         }
