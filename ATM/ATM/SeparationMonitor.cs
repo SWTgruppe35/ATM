@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class SeparationMonitor: IMonitor
+    public class SeparationMonitor: IMonitor
     {
         public void FindConflictingPlanes(List<Plane> planes)
         {
@@ -65,6 +65,6 @@ namespace ATM
                 return false;
         }
 
-        private List<Plane> _conflictingPlanes;
+        public List<Plane> _conflictingPlanes;
     }
 }
