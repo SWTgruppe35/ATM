@@ -8,13 +8,13 @@ namespace ATM
 {
    public class AirSpaceMonitor: IAirSpaceMonitor
    {
-        public List<Plane> Monitor(List<Plane> planes)
+        public List<Plane> Monitor(ref List<Plane> planes)
         {
-            foreach (var plane in planes)
+            for (int i = 0; i < planes.Count; i++)
             {
-                if (plane.PositionX >80000 || plane.PositionY > 80000 || plane.Altitude < 500 || plane.Altitude > 20000)
+                if (planes[i].PositionX >80000 || planes[i].PositionY > 80000 || planes[i].Altitude < 500 || planes[i].Altitude > 20000)
                 {
-                    planes.Remove(plane);
+                    planes.RemoveAt(i);
                 }
             }
 
