@@ -15,12 +15,17 @@ namespace ATM.Unit.Test
     {
         private ITransponderReceiver _receiver;
         private PlaneTracker _uut;
-        private Plane _plane; 
+        private Plane _plane;
+        private DateTime _date; 
 
         [SetUp]
         public void Setup()
         {
-            _plane = Substitute.For<Plane>();
+            _receiver = Substitute.For<ITransponderReceiver>();
+
+            _date = new DateTime(2019, 3, 14, 9, 47, 54, 096);
+            _plane = new Plane("EIS771", 5000.0, 44789.0, 6600.0, _date);
+
             _uut = new PlaneTracker(_receiver); 
         }
 
@@ -28,8 +33,19 @@ namespace ATM.Unit.Test
         [Test]
         public void ATM_ConvertStringToDatetime_CorrectString()
         {
-            DateTime date = new DateTime(2019, 3, 14, 9, 47, 54, 096);
-            Assert.That(_uut.ConvertStringToDatetime("20190314094754096"), Is.EqualTo(date)); 
+           
+            Assert.That(_uut.ConvertStringToDatetime("20190314094754096"), Is.EqualTo(_date)); 
+        }
+
+        [Test]
+        public void ATM_ConvertStringToPlane_CorrectString()
+        { 
+            Plane plane = _uut.ConvertStringToPlane("Transponderdata EIS771;5000;44789;6600;20190314094754096");
+            Assert.That(_plane.Tag, Is.EqualTo(plane.Tag));
+            Assert.That(_plane.PositionX, Is.EqualTo(plane.PositionX));
+            Assert.That(_plane.PositionY, Is.EqualTo(plane.PositionY));
+            Assert.That(_plane.Altitude, Is.EqualTo(plane.Altitude));
+            Assert.That(_plane.Timestamp, Is.EqualTo(plane.Timestamp));
         }
 
     }
