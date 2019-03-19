@@ -21,12 +21,12 @@ namespace ATM
         }
 
 
-        private Plane ConvertStringToPlane(String planeString)
+        public Plane ConvertStringToPlane(String planeString)
         {
             // Eksempel: Transponderdata EIS771;5000;44789;6600;20190314094754096
 
             List<string> planeDataList = planeString.Split(';').ToList<string>();
-            List<string> TextandTag = planeString.Split(' ').ToList<string>();
+            List<string> TextandTag = planeDataList[0].Split(' ').ToList<string>();
 
             var plane = new Plane(
                             TextandTag[1],
