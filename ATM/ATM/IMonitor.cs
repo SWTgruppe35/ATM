@@ -8,8 +8,8 @@ namespace ATM
 {
     interface IMonitor
     {
-        void FindConflictingPlanes(List<Plane>);
-        void LogPlane(Plane);
-        bool CheckIfConflict(Plane, Plane)
+        void FindConflictingPlanes(List<Plane> plane);
+        void LogPlane(Plane plane);
+        bool CheckIfConflict(Plane plane1, Plane plane2);
     }
 }
