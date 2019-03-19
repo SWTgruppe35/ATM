@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
-/*
+
 namespace ATM.Unit.Test
 {
     [TestFixture]
@@ -48,7 +48,7 @@ namespace ATM.Unit.Test
 
         [TestCase(false, 80001)]
         [TestCase(true, 80000)]
-        public void positionXBoundaries(bool inList, double posX)
+        public void PositionXBoundaries(bool inList, double posX)
         {
             Plane testPlane = new Plane("testPlane", posX, 50000, 500, DateTime.Now);
             _planes.Add(testPlane);
@@ -60,7 +60,7 @@ namespace ATM.Unit.Test
 
         [TestCase(false, 80001)]
         [TestCase(true, 80000)]
-        public void positionYBoundaries(bool inList, double posY)
+        public void PositionYBoundaries(bool inList, double posY)
         {
             Plane testPlane = new Plane("testPlane", 50000, posY, 500, DateTime.Now);
             _planes.Add(testPlane);
@@ -73,4 +73,3 @@ namespace ATM.Unit.Test
 
     }
 }
-*/
