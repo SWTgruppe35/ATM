@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using NSubstitute;
-
+/*
 namespace ATM.Unit.Test
 {
     class AirSpaceMonitorTest
@@ -35,3 +35,4 @@ namespace ATM.Unit.Test
         }
     }
 }
+*/
