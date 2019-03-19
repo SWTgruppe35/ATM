@@ -28,16 +28,18 @@ namespace ATM.Unit.Test
                 _plane = new Plane("TestPlane",50000,50000,5000,DateTime.Now);
         }
 
-            [Test]
-            public void AltitudeOutOfBoundaries()
+        [TestCase(false,499)]
+        [TestCase(false,20001)]
+        [TestCase(true, 500)]
+            public void AltitudeOutOfBoundaries(bool inList,double altitude)
             {
-                _plane.Altitude = 499;
+                _plane.Altitude = altitude;
 
                 _planes.Add(_plane);
 
                 _uut.Monitor(_planes);
 
-                Assert.Contains( _plane, _planes);
+                Assert.Equals( inList,_planes.Contains(_plane));
             }
 
         
