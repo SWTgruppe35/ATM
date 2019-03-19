@@ -13,7 +13,7 @@ namespace ATM.Unit.Test
     [TestFixture]
     public class ATMWithEventsUnitTests
     {
-        private ICalculator _uut;
+        private Calculator _uut;
         private List<Plane> _newPlane;
         private List<Plane> _oldPlane;
         private Plane _Plane1;
@@ -32,20 +32,13 @@ namespace ATM.Unit.Test
         [Test]
         public void CalcuateFromOnePointEqualsZero()
         {
-            _Plane1.Tag = "TestTag";
-            _Plane1.PositionX = 12000;
-            _Plane1.PositionY = 12000;
-            _Plane1.Timestamp = new DateTime(20190314101814704);
+            _Plane1 = new Plane("tag1", 10000, 10000, 10000, DateTime.Now);
 
-            _Plane2.Tag = "TestTag2";
-            _Plane2.PositionX = 12000;
-            _Plane2.PositionY = 12000;
-            _Plane2.Timestamp = new DateTime(20190314101814704);
+            _Plane2 = new Plane("tag2", 10000, 10000, 12000, DateTime.Now);
 
             _newPlane = new List<Plane>
             {
                 _Plane1
-
             };
 
             _oldPlane = new List<Plane>
@@ -53,9 +46,12 @@ namespace ATM.Unit.Test
                 _Plane2
             };
 
-            _uut.CalculateCourse(_Plane1, _Plane2);
-            Assert.That(_Plane1.CompassCourse, Is.EqualTo(0));
+            _uut.CalculateCourse(_Plane2, _Plane1);
+            Assert.That(_Plane2.CompassCourse, Is.EqualTo(0));
+
         }   
 
     }
 }
+
+
