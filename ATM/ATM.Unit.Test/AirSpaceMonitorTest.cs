@@ -16,24 +16,28 @@ namespace ATM.Unit.Test
         
         
             private IAirSpaceMonitor _uut;
-            private  List<Plane> planes;
+            private  List<Plane> _planes;
+            private Plane _plane;
 
 
-            [SetUp]
+       [SetUp]
             public void Setup()
             {
                 _uut = new AirSpaceMonitor();
-                planes = new List<Plane>();
-            }
+                _planes = new List<Plane>(); 
+                _plane = new Plane("TestPlane",50000,50000,5000,DateTime.Now);
+        }
 
             [Test]
             public void AltitudeOutOfBoundaries()
             {
-                var sub = Substitute.For<Plane>();
+                _plane.Altitude = 499;
 
-                //sub.Altitude = 
+                _planes.Add(_plane);
 
-                //_uut.Monitor(planes);
+                _uut.Monitor(_planes);
+
+                Assert.Contains( _plane, _planes);
             }
 
         
