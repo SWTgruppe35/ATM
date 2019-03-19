@@ -55,10 +55,14 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="TransponderReceiver">
+      <HintPath>..\TransponderReceiver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calcuate.Test.cs" />
     <Compile Include="AirSpaceMonitorTest.cs" />
+    <Compile Include="PlaneTrackerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
