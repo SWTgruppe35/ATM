@@ -8,6 +8,10 @@ namespace ATM
 {
     public class SeparationMonitor: IMonitor
     {
+        public SeparationMonitor()
+        {
+            _conflictingPlanes=new List<Plane>();
+        }
         public void FindConflictingPlanes(List<Plane> planes)
         {
             List<Plane> newPlanes=new List<Plane>();
@@ -20,7 +24,9 @@ namespace ATM
                     if (CheckIfConflict(planes[i], planes[j]))
                     {
                         newPlanes.Add(planes[i]);
+                        newPlanes.Add(planes[j]);
                         LogPlane(planes[i]);
+                        LogPlane(planes[j]);
                     }
 
                 }
@@ -47,13 +53,9 @@ namespace ATM
         {
             double x = plane1.PositionX - plane2.PositionX;
 
-            if (x < 0)
-                x = x * (-1);
 
             double y = plane1.PositionY - plane2.PositionY;
 
-            if (y < 0)
-                y = y * (-1);
 
             double HorizontalD = Math.Sqrt((x * x) + (y * y));
             double VerticalD = plane1.Altitude - plane2.Altitude;
