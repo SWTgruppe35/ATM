@@ -9,7 +9,7 @@ using ATM;
 
 namespace ATM
 {
-    class PlaneTracker
+    public class PlaneTracker
     {
         private ITransponderReceiver _receiver;
         private List<Plane> _planes = new List<Plane>();
@@ -39,7 +39,7 @@ namespace ATM
             return plane; 
         }
 
-        private DateTime ConvertStringToDatetime(String dateString)
+        public DateTime ConvertStringToDatetime(String dateString)
         {
             var format = "yyyyMMddHHmmssfff";
 
