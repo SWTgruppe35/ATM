@@ -9,6 +9,6 @@ namespace ATM
 {
     interface IAirSpaceMonitor
     {
-        void Monitor();
+        List<Plane> Monitor(List<Plane> planes);
     }
 }
