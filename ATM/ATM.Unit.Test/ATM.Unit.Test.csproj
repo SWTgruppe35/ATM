@@ -59,7 +59,6 @@
   <ItemGroup>
     <Compile Include="Calcuate.Test.cs" />
     <Compile Include="AirSpaceMonitorTest.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
