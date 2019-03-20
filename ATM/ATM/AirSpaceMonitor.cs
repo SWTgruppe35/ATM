@@ -8,6 +8,11 @@ namespace ATM
 {
    public class AirSpaceMonitor: IAirSpaceMonitor
    {
+       public AirSpaceMonitor()
+       {
+           
+       }
+          
         public List<Plane> Monitor(ref List<Plane> planes)
         {
             for (int i = 0; i < planes.Count; i++)

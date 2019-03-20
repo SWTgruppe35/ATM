@@ -14,7 +14,6 @@ namespace ATM.Unit.Test
     class AirSpaceMonitorTest
     {
 
-
         private IAirSpaceMonitor _uut;
         private List<Plane> _planes;
 
@@ -25,7 +24,7 @@ namespace ATM.Unit.Test
             _uut = new AirSpaceMonitor();
             _planes = new List<Plane>();
 
-            for (int i = 0; i < 5; i++)
+            for (var i = 0; i < 5; i++)
             {
                 _planes.Add(new Plane("Plane" + i.ToString(), 50000, 50000, 5000, DateTime.Now));
             }
