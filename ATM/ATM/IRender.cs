@@ -8,7 +8,7 @@ namespace ATM
 {
     public interface IRender
     {
-        void PrintPlanes(ref List<Plane> planes);
+        void PrintPlanes(List<Plane> planes);
 
 
 
