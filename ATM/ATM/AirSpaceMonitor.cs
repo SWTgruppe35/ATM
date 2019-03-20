@@ -17,11 +17,11 @@ namespace ATM
 
        public void HandlePlaneListReady(object src, PlaneListReadyEventArgs planeList)
        {
-           var monitorList = new MonitorListReadyEventArgs();
+           var copyPlaneList = new List<Plane>(planeList.PlaneList);
 
-           monitorList.PlaneList = Monitor(planeList.PlaneList);
+           var monitorList = new MonitorListReadyEventArgs {PlaneList = Monitor(copyPlaneList)};
 
-            MonitorListReady?.Invoke(this, monitorList);
+           MonitorListReady?.Invoke(this, monitorList);
        }
 
         public List<Plane> Monitor( List<Plane> planes)
