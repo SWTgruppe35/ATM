@@ -27,6 +27,8 @@ namespace ATM
                     {
                         newPlanes.Add(planes[i]);
                         newPlanes.Add(planes[j]);
+                        LogPlane(planes[i]);
+                        LogPlane(planes[j]);
 
                         planeWasConflicting = true;
                     }
