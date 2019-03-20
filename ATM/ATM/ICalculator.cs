@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
+
     public interface ICalculator
     {
-        List<Plane> ComparePlanes(List<Plane> planes);
-        void CalculateVelocity(Plane planeNew, Plane planeOld);
-        void CalculateCourse(Plane planeOld, Plane planeNew);
+        event EventHandler<CalculatedListReadyEventArgs> CalculatedListReady;
     }
+
+    public class CalculatedListReadyEventArgs : EventArgs
+    {
+        public List<Plane> PlaneList { get; set; }
+    }
+
 }

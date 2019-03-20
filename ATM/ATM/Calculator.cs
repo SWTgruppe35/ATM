@@ -9,6 +9,24 @@ namespace ATM
 {
     public class Calculator : ICalculator
     {
+        public List<Plane> CopyPlaneList { get; set; }
+
+        public event EventHandler<CalculatedListReadyEventArgs> CalculatedListReady;
+
+        public Calculator(IAirSpaceMonitor asm)
+        {
+            asm.MonitorListReady += HandlerMonitorListReady;
+        }
+
+        public void HandlerMonitorListReady(object src, MonitorListReadyEventArgs args)
+        {
+            CopyPlaneList=new List<Plane>(args.PlaneList);
+
+            var calculatedList = new CalculatedListReadyEventArgs(){PlaneList = ComparePlanes(CopyPlaneList)};
+
+            CalculatedListReady?.Invoke(this, calculatedList);
+        }
+
         public List<Plane> ComparePlanes(List<Plane> newPlanes)
         {
             if (_planes.Count != 0)
