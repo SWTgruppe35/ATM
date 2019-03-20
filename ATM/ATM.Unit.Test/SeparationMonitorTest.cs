@@ -175,6 +175,7 @@ namespace ATM.Unit.Test
             Assert.That(_plane2.SeparationCondition, Is.EqualTo(false));
         }
 
+        [Test]
         public void SeperationListReadyEventInvoked()
         {
             _SeperationListReadyEventRaised = 0;
