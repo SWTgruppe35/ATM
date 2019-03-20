@@ -41,6 +41,17 @@ namespace ATM.Unit.Test
             Assert.Contains(_Plane1, _planeList);
         }
 
+        public void PrintCanReturnTrue()
+        {
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
+            _Plane1.SeparationCondition = true;
+            _planeList = new List<Plane>();
+            _planeList.Add(_Plane1);
+
+            
+            Assert.Contains(_Plane1.SeparationCondition == true, _planeList);
+        }
+
 
 
     }
