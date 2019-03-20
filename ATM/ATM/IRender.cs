@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    public interface ILogger
+    public interface IRender
     {
-        void LogConflictingPlanes(Plane plane);
+        void PrintPlanes(ref List<Plane> planes);
+
+        void PrintSpaceCollision(ref List<Plane> planes);
+
+
     }
 }
