@@ -8,11 +8,29 @@ namespace ATM
 {
     public class SeparationMonitor: IMonitor
     {
-        public SeparationMonitor()
+        public List<Plane> CopyPlaneList { get; set; }
+
+        public event EventHandler<SeperationCalculatedEventArgs> SeperationListReady;
+
+        public SeparationMonitor(ICalculator cal)
         {
+            cal.CalculatedListReady += HandleCalculatedListReady;
+
             _conflictingPlanes=new List<Plane>();
             _logger=new Logger();
         }
+
+        public void HandleCalculatedListReady(object src, CalculatedListReadyEventArgs args)
+        {
+            CopyPlaneList = new List<Plane>(args.PlaneList);
+
+            FindConflictingPlanes(CopyPlaneList);
+
+            var seperationList = new SeperationCalculatedEventArgs(){PlaneList = CopyPlaneList};
+
+            SeperationListReady?.Invoke(this, seperationList);
+        }
+
         public void FindConflictingPlanes(List<Plane> planes)
         {
             List<Plane> newPlanes=new List<Plane>();

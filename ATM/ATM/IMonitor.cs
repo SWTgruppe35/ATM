@@ -8,10 +8,10 @@ namespace ATM
 {
     public interface IMonitor
     {
-        // event EventHandler<PlaneListCalculatedEventArgs> PlaneListReady;
+       event EventHandler<SeperationCalculatedEventArgs> SeperationListReady;
     }
 
-    public class PlaneListCalculatedEventArgs : EventArgs
+    public class SeperationCalculatedEventArgs : EventArgs
     {
         public List<Plane> PlaneList { get; set; }
     }
