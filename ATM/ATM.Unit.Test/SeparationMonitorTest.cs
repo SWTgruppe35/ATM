@@ -141,5 +141,31 @@ namespace ATM.Unit.Test
 
             Assert.That(_uut._conflictingPlanes.Count, Is.EqualTo(2));
         }
+
+        [Test]
+        public void SeparationConditionSetCorrect()
+        {
+            _planes.Add(_plane1);
+            _planes.Add(_plane2);
+            _uut.FindConflictingPlanes(_planes);
+
+            Assert.That(_plane1.SeparationCondition, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void SeparationConditionFalseCorrect()
+        {
+            _planes.Add(_plane1);
+            _planes.Add(_plane2);
+            _uut.FindConflictingPlanes(_planes);
+            List<Plane> _planeses = new List<Plane>();
+            _planeses.Add(_plane1);
+            _planeses.Add(_plane3);
+            _uut.FindConflictingPlanes(_planeses);
+
+            Assert.That(_plane2.SeparationCondition, Is.EqualTo(false));
+        }
+
+
     }
 }

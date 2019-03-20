@@ -7,7 +7,6 @@ using NSubstitute;
 using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
-/*
 
 namespace ATM.Unit.Test
 {
@@ -39,8 +38,21 @@ namespace ATM.Unit.Test
 
             _uut.PrintPlanes(_planeList);
             _uut.PrintPlanes(_planeList);
-            Assert.AreEqual(0, counter);
+            Assert.Contains(_Plane1, _planeList);
         }
+
+        [Test]
+        public void PrintCanReturnTrue()
+        {
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
+            _Plane1.SeparationCondition = true;
+            _planeList = new List<Plane>();
+            _planeList.Add(_Plane1);
+
+         
+            Assert.IsTrue(_Plane1.SeparationCondition);
+        }
+        
 
 
 
@@ -48,4 +60,4 @@ namespace ATM.Unit.Test
     
 }
 
-    */
+    

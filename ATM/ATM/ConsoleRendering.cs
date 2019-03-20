@@ -17,6 +17,7 @@ namespace ATM
                 Console.WriteLine(plane.PositionX);
                 Console.WriteLine(plane.PositionY);
                 Console.WriteLine(plane.Altitude);
+                Console.WriteLine(plane.Timestamp);
                 Console.WriteLine(plane.HorizontalVelocity);
                 Console.WriteLine(plane.CompassCourse);
                 Console.WriteLine("Awaiting new plane...");
