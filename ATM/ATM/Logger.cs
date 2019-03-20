@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Logger: ILogger
+    public class Logger: ILogger
     {
         public void LogConflictingPlanes(Plane plane1)
         {
