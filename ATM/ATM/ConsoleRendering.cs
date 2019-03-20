@@ -9,7 +9,7 @@ namespace ATM
     public class ConsoleRendering : IRender
     {
         public bool Seperation;
-        public bool Collision(bool SeperationCondition)
+        public bool Collision(bool SeperationCondition, Plane plane)
         {
             if (SeperationCondition == false)
             {
@@ -37,7 +37,8 @@ namespace ATM
                 Console.WriteLine(plane.CompassCourse);
                 Console.WriteLine("Awaiting new plane...");
 
-                Collision(Seperation);
+                Collision(Seperation, plane);
+                
 
 
             }
