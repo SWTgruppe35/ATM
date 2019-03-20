@@ -48,9 +48,10 @@ namespace ATM.Unit.Test
             _planeList = new List<Plane>();
             _planeList.Add(_Plane1);
 
-            
             Assert.Contains(_Plane1.SeparationCondition == true, _planeList);
+            Assert.IsTrue(_Plane1.SeparationCondition);
         }
+        
 
 
 
