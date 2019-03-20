@@ -7,7 +7,6 @@ using NSubstitute;
 using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
-/*
 
 namespace ATM.Unit.Test
 {
@@ -39,7 +38,7 @@ namespace ATM.Unit.Test
 
             _uut.PrintPlanes(_planeList);
             _uut.PrintPlanes(_planeList);
-            Assert.AreEqual(0, counter);
+            Assert.Contains(_Plane1, _planeList);
         }
 
 
@@ -48,4 +47,4 @@ namespace ATM.Unit.Test
     
 }
 
-    */
+    
