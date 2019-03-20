@@ -13,14 +13,16 @@ namespace ATM
         {
             if (SeperationCondition == false)
             {
-                return false;
+                Seperation = false;
+                return Seperation;
             }
             else
             {
+                Seperation = true;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
                 Console.ResetColor();
-                return true;
+                return Seperation;
             }
         }
         public void PrintPlanes(List<Plane> planes)

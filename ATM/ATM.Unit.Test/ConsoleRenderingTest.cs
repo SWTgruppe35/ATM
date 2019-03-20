@@ -44,7 +44,8 @@ namespace ATM.Unit.Test
         [Test]
         public void PrintCanReturnTrue()
         {
-            _uut.Seperation = true;
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
+            _uut.Collision(true, _Plane1);
             Assert.IsTrue(_uut.Seperation);
         }
         
