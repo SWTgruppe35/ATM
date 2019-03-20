@@ -8,7 +8,7 @@ namespace ATM
 {
     public class ConsoleRendering : IRender
     {
-        public void PrintPlanes(ref List<Plane> planes)
+        public void PrintPlanes(List<Plane> planes)
         {
             foreach (var plane in planes)
             {

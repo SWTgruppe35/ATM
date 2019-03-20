@@ -23,8 +23,6 @@ namespace ATM.Unit.Test
         private Plane _Plane3;
         private Plane _Plane4;
         private Plane _Plane5;
-        private Plane _Plane6;
-        private Plane _Plane7;
 
 
 
