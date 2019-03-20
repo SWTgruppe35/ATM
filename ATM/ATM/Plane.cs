@@ -31,6 +31,7 @@ namespace ATM
             PositionY = positionY;
             Altitude = altitude;
             Timestamp = timestamp;
+            SeparationCondition = false;
         }
 
     
