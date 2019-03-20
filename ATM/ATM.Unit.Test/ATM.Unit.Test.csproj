@@ -60,7 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalcuaterTest.cs" />
+    <Compile Include="CalculaterTest.cs" />
     <Compile Include="AirSpaceMonitorTest.cs" />
     <Compile Include="ConsoleRenderingTest.cs" />
     <Compile Include="LoggerTest.cs" />

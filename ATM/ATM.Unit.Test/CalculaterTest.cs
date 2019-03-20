@@ -11,7 +11,7 @@ using NSubstitute;
 namespace ATM.Unit.Test
 {
     [TestFixture]
-    public class ATMWithEventsUnitTests
+    public class CalculaterTest
     {
         private Calculator _uut;
         private List<Plane> _newPlane;
@@ -24,6 +24,7 @@ namespace ATM.Unit.Test
         private Plane _Plane4;
         private Plane _Plane5;
         private Plane _Plane6;
+        private Plane _Plane7;
 
         private IAirSpaceMonitor Iasm = Substitute.For<IAirSpaceMonitor>();
         private MonitorListReadyEventArgs monitorList;

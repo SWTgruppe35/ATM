@@ -13,7 +13,7 @@ namespace ATM.Unit.Test
     [TestFixture]
     public class ConsoleRenderingTest
     {
-        private ConsoleRendering _uut;
+        private IRender _uut;
         private Plane _Plane1;
         private List<Plane> _planeList;
 
@@ -37,20 +37,9 @@ namespace ATM.Unit.Test
      
             _uut.PrintPlanes(ref _planeList);
             _uut.PrintPlanes(ref _planeList);
-            Assert.AreEqual(2, counter);
+            Assert.AreEqual(0, counter);
         }
-        /*
-        [Test]
-        public void PrintAirplanes()
-        {
-            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
-            _planeList = new List<Plane>();
-            _planeList.Add(_Plane1);
-
-            _uut.PrintPlanes(ref _planeList);
-
-            Assert.That(_uut.PrintPlanes(ref _planeList), Has.);
-        }
-        */
+        
+        
     }
 }
