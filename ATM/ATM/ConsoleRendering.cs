@@ -8,6 +8,21 @@ namespace ATM
 {
     public class ConsoleRendering : IRender
     {
+        public bool Seperation;
+        public bool Collision(bool SeperationCondition, Plane plane)
+        {
+            if (SeperationCondition == false)
+            {
+                return false;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
+                Console.ResetColor();
+                return true;
+            }
+        }
         public void PrintPlanes(List<Plane> planes)
         {
             foreach (var plane in planes)
@@ -21,16 +36,15 @@ namespace ATM
                 Console.WriteLine(plane.HorizontalVelocity);
                 Console.WriteLine(plane.CompassCourse);
                 Console.WriteLine("Awaiting new plane...");
+
+                Collision(Seperation, plane);
                 
-                if (plane.SeparationCondition == true)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
-                    Console.ResetColor();
-                }
-                
+
+
             }
         }
+
+        
 
     
     }

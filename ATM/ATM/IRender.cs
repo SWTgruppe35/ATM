@@ -10,6 +10,8 @@ namespace ATM
     {
         void PrintPlanes(List<Plane> planes);
 
+        bool Collision(bool SeperationCondition, Plane plane);
+
 
 
     }
