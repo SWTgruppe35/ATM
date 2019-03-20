@@ -11,6 +11,7 @@ namespace ATM
         public SeparationMonitor()
         {
             _conflictingPlanes=new List<Plane>();
+            _logger=new Logger();
         }
         public void FindConflictingPlanes(List<Plane> planes)
         {
@@ -18,6 +19,7 @@ namespace ATM
             for (int i=0; i<planes.Count;i++)
 
             {
+                bool planeWasConflicting = false;
                 for (int j=i+1; j < planes.Count; j++)
                 {
 
@@ -25,11 +27,16 @@ namespace ATM
                     {
                         newPlanes.Add(planes[i]);
                         newPlanes.Add(planes[j]);
-                        LogPlane(planes[i]);
-                        LogPlane(planes[j]);
-                    }
 
+                        planeWasConflicting = true;
+                    }
                 }
+
+                if (planeWasConflicting == false)
+                {
+                    planes[i].SeparationCondition = false;
+                }
+
             }
 
             _conflictingPlanes = newPlanes;
@@ -39,14 +46,19 @@ namespace ATM
 
         public void LogPlane(Plane plane)
         {
+            bool alreadyLogged=false;
             foreach (var i in _conflictingPlanes)
             {
                 if (i.Tag == plane.Tag)
-                    return;
+                    alreadyLogged = true;
             }
 
-            //somehow call logger to log plane
-            //log.LogConflictingPlanes(plane);
+            if (alreadyLogged == false)
+            {
+                _logger.LogConflictingPlanes(plane);
+                plane.SeparationCondition = true;
+            }
+            
         }
 
         public bool CheckIfConflict(Plane plane1, Plane plane2)
@@ -68,5 +80,6 @@ namespace ATM
         }
 
         public List<Plane> _conflictingPlanes;
+        private ILogger _logger;
     }
 }
