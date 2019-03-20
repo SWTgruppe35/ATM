@@ -16,8 +16,14 @@ namespace ATM.Unit.Test
         private Calculator _uut;
         private List<Plane> _newPlane;
         private List<Plane> _oldPlane;
+        private List<Plane> planes;
         private Plane _Plane1;
         private Plane _Plane2;
+        private Plane _Plane3;
+        private Plane _Plane4;
+        private Plane _Plane5;
+        private Plane _Plane6;
+
 
 
 
@@ -55,6 +61,52 @@ namespace ATM.Unit.Test
 
             _uut.CalculateVelocity(_Plane1, _Plane2);
             Assert.That(_Plane1.HorizontalVelocity, Is.InRange(140, 144));
+        }
+
+        [Test]
+        public void TestComparePlanesList()
+        {
+            var newlist = new Calculator()._planes;
+            _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
+            _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
+            _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
+            planes = new List<Plane>();
+
+            planes.Add(_Plane1);
+            planes.Add(_Plane2);
+            planes.Add(_Plane3);
+
+            _uut.ComparePlanes(planes);
+            Assert.That(_uut._planes.Contains(_Plane1));
+        }
+
+        [Test]
+        public void TestComparePlanesListfull()
+        {
+            var newlist = new Calculator()._planes;
+            _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
+            _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
+            _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
+            planes = new List<Plane>();
+
+            planes.Add(_Plane1);
+            planes.Add(_Plane2);
+            planes.Add(_Plane3);
+
+            _uut.ComparePlanes(planes);
+
+            _Plane4 = new Plane("plane4", 50000, 20000, 17800, DateTime.Now);
+            _Plane5 = new Plane("plane2", 50000, 20000, 17800, DateTime.Now);
+
+            planes.Add(_Plane4);
+            planes.Add(_Plane5);
+
+
+            _uut.ComparePlanes(planes);
+
+
+
+            Assert.That(_uut._planes.Contains(_Plane1));
         }
 
     }

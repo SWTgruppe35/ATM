@@ -23,13 +23,9 @@ namespace ATM
             }
         }
 
-        public void PrintSpaceCollision(ref List<Plane> planes)
+        public void PrintSpaceCollision(ref List<Plane> planes, bool setcollision)
         {
-            foreach (var plane in planes)
-            {
-                Console.WriteLine(plane);
-                
-            }
+           
         }
 
     
