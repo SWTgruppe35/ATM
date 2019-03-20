@@ -28,7 +28,7 @@ namespace ATM.Unit.Test
 
         private IAirSpaceMonitor Iasm = Substitute.For<IAirSpaceMonitor>();
         private MonitorListReadyEventArgs monitorList;
-
+        private int _CalculatedListReadyEventRaised;
 
         [SetUp]
         public void Setup()
@@ -117,6 +117,16 @@ namespace ATM.Unit.Test
             Assert.That(_uut._planes.Contains(_Plane5));
         }
 
+        [Test]
+        public void CalculatedListReadyInvoked()
+        {
+            _CalculatedListReadyEventRaised = 0;
+            _uut.CalculatedListReady += (sender, args) => { ++_CalculatedListReadyEventRaised; };
+
+            Iasm.MonitorListReady += Raise.EventWith(this, monitorList);
+
+            Assert.AreEqual(1,_CalculatedListReadyEventRaised);
+        }
     }
 }
 
