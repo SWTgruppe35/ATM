@@ -13,21 +13,27 @@ namespace ATM.Unit.Test
     [TestFixture]
     class AirSpaceMonitorTest
     {
-
-        private IAirSpaceMonitor _uut;
-        private List<Plane> _planes;
+        private IPlaneTracker Ipt = Substitute.For<IPlaneTracker>();
+        private AirSpaceMonitor _uut;
+        private PlaneListReadyEventArgs planeList;
+        private int _MonitorListReadyEventRaised;
 
 
         [SetUp]
         public void Setup()
         {
-            _uut = new AirSpaceMonitor();
-            _planes = new List<Plane>();
+            _uut = new AirSpaceMonitor(Ipt);
+            planeList = new PlaneListReadyEventArgs();
+            planeList.PlaneList = new List<Plane>();
 
             for (var i = 0; i < 5; i++)
             {
-                _planes.Add(new Plane("Plane" + i.ToString(), 50000, 50000, 5000, DateTime.Now));
+                planeList.PlaneList.Add(new Plane("Plane" + i.ToString(), 50000, 50000, 5000, DateTime.Now));
             }
+
+            //Event raised test
+            _MonitorListReadyEventRaised = 0;
+            _uut.MonitorListReady += (sender, args) => { ++_MonitorListReadyEventRaised; };
 
         }
 
@@ -37,12 +43,16 @@ namespace ATM.Unit.Test
         [TestCase(true, 20000)]
         public void AltitudeBoundaries(bool inList, double altitude)
         {
+            
+            
             Plane testPlane = new Plane("testPlane", 50000, 50000, altitude, DateTime.Now);
-            _planes.Add(testPlane);
+            planeList.PlaneList.Add(testPlane);
 
-            _uut.Monitor(ref _planes);
+            Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
-            Assert.AreEqual(inList, _planes.Contains(testPlane));
+           
+
+            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
         }
 
         [TestCase(false, 80001)]
@@ -50,11 +60,11 @@ namespace ATM.Unit.Test
         public void PositionXBoundaries(bool inList, double posX)
         {
             Plane testPlane = new Plane("testPlane", posX, 50000, 500, DateTime.Now);
-            _planes.Add(testPlane);
+            planeList.PlaneList.Add(testPlane);
 
-            _uut.Monitor(ref _planes);
+            Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
-            Assert.AreEqual(inList, _planes.Contains(testPlane));
+            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
         }
 
         [TestCase(false, 80001)]
@@ -62,13 +72,21 @@ namespace ATM.Unit.Test
         public void PositionYBoundaries(bool inList, double posY)
         {
             Plane testPlane = new Plane("testPlane", 50000, posY, 500, DateTime.Now);
-            _planes.Add(testPlane);
+            planeList.PlaneList.Add(testPlane);
 
-            _uut.Monitor(ref _planes);
+            Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
-            Assert.AreEqual(inList, _planes.Contains(testPlane));
+            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
         }
 
+        [Test]
+        public void MonitorListReadyEventInvoked()
+        {
+
+            Ipt.PlaneListReady += Raise.EventWith(this, planeList);
+
+            Assert.AreEqual(1,_MonitorListReadyEventRaised);
+        }
 
     }
 }
