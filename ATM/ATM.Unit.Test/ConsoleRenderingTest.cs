@@ -24,8 +24,8 @@ namespace ATM.Unit.Test
         {
             _uut = new ConsoleRendering();
         }
-
-        public void checkprint()
+        [Test]
+        public void Printplanescheckprint()
         {
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
             _planeList = new List<Plane>();
