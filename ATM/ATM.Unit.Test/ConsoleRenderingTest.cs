@@ -44,9 +44,7 @@ namespace ATM.Unit.Test
         [Test]
         public void PrintCanReturnTrue()
         {
-            ConsoleRendering Console_uut = new ConsoleRendering();
-            Console_uut.Seperation = true;
-            
+            _uut.Seperation = true;
             Assert.IsTrue(_uut.Seperation);
         }
         
