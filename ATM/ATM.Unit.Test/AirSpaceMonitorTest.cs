@@ -39,8 +39,6 @@ namespace ATM.Unit.Test
         [TestCase(true, 20000)]
         public void AltitudeBoundaries(bool inList, double altitude)
         {
-            
-            
             Plane testPlane = new Plane("testPlane", 50000, 50000, altitude, DateTime.Now);
             planeList.PlaneList.Add(testPlane);
 
@@ -48,7 +46,7 @@ namespace ATM.Unit.Test
 
            
 
-            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
+            Assert.AreEqual(inList, _uut.CopyPlaneList.Contains(testPlane));
         }
 
         [TestCase(false, 80001)]
@@ -60,7 +58,7 @@ namespace ATM.Unit.Test
 
             Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
-            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
+            Assert.AreEqual(inList, _uut.CopyPlaneList.Contains(testPlane));
         }
 
         [TestCase(false, 80001)]
@@ -72,7 +70,7 @@ namespace ATM.Unit.Test
 
             Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
-            Assert.AreEqual(inList, planeList.PlaneList.Contains(testPlane));
+            Assert.AreEqual(inList, _uut.CopyPlaneList.Contains(testPlane));
         }
 
         [Test]

@@ -8,6 +8,8 @@ namespace ATM
 {
    public class AirSpaceMonitor: IAirSpaceMonitor
    {
+       public List<Plane> CopyPlaneList { get; set; }
+
        public event EventHandler<MonitorListReadyEventArgs> MonitorListReady;
 
        public AirSpaceMonitor(IPlaneTracker ps)
@@ -17,9 +19,9 @@ namespace ATM
 
        public void HandlePlaneListReady(object src, PlaneListReadyEventArgs planeList)
        {
-           var copyPlaneList = new List<Plane>(planeList.PlaneList);
+           CopyPlaneList = new List<Plane>(planeList.PlaneList);
 
-           var monitorList = new MonitorListReadyEventArgs {PlaneList = Monitor(copyPlaneList)};
+           var monitorList = new MonitorListReadyEventArgs {PlaneList = Monitor(CopyPlaneList)};
 
            MonitorListReady?.Invoke(this, monitorList);
        }
