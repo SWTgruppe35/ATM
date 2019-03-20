@@ -17,6 +17,7 @@ namespace ATM.Unit.Test
         private List<Plane> _newPlane;
         private List<Plane> _oldPlane;
         private List<Plane> planes;
+        private List<Plane> planes1;
         private Plane _Plane1;
         private Plane _Plane2;
         private Plane _Plane3;
@@ -97,16 +98,21 @@ namespace ATM.Unit.Test
 
             _Plane4 = new Plane("plane4", 50000, 20000, 17800, DateTime.Now);
             _Plane5 = new Plane("plane2", 50000, 20000, 17800, DateTime.Now);
+            planes1 = new List<Plane>();
 
             planes.Add(_Plane4);
             planes.Add(_Plane5);
 
+            planes1.Add(_Plane1);
+            planes1.Add(_Plane4);
+            planes1.Add(_Plane5);
 
-            _uut.ComparePlanes(planes);
+
+            _uut.ComparePlanes(planes1);
 
 
 
-            Assert.That(_uut._planes.Contains(_Plane1));
+            Assert.That(_uut._planes.Contains(_Plane5));
         }
 
     }
