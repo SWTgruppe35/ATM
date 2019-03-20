@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace ATM.Unit.Test
@@ -15,10 +16,18 @@ namespace ATM.Unit.Test
         private Plane _plane2;
         private Plane _plane3;
         private SeparationMonitor _uut;
+
+        private ICalculator Ical = Substitute.For<ICalculator>();
+        private SeperationCalculatedEventArgs seperationList;
+        private int _SeperationListReadyEventRaised; 
+
         [SetUp]
         public void Setup()
         {
-            _uut=new SeparationMonitor();
+            _uut = new SeparationMonitor(Ical);
+            seperationList = new SeperationCalculatedEventArgs();
+            seperationList.PlaneList=new List<Plane>();
+
             _plane1=new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _plane2=new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
             _plane3 = new Plane("plane3", 50000, 20000, 17800, DateTime.Now);
@@ -166,6 +175,10 @@ namespace ATM.Unit.Test
             Assert.That(_plane2.SeparationCondition, Is.EqualTo(false));
         }
 
+        public void SeperationListReadyEventInvoked()
+        {
+
+        }
 
     }
 }
