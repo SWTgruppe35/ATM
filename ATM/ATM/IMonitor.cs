@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    interface IMonitor
+    public interface IMonitor
     {
-        void FindConflictingPlanes(List<Plane> plane);
-        void LogPlane(Plane plane);
-        bool CheckIfConflict(Plane plane1, Plane plane2);
+        // event EventHandler<PlaneListCalculatedEventArgs> PlaneListReady;
+    }
+
+    public class PlaneListCalculatedEventArgs : EventArgs
+    {
+        public List<Plane> PlaneList { get; set; }
     }
 }
