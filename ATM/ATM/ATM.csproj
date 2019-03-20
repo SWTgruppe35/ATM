@@ -66,6 +66,7 @@
     <Compile Include="IAirSpaceMonitor.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IMonitor.cs" />
+    <Compile Include="IPlaneTracker.cs" />
     <Compile Include="IRender.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Plane.cs" />

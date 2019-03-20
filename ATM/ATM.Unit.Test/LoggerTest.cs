@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace ATM.Unit.Test
 
         public void Setup()
         {
+            File.Delete(@"..\LogFile.txt");
             _logger=new Logger();
             _plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _plane2 = new Plane("plane2", 50000, 20000, 18000, DateTime.Now);

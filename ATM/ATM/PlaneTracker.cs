@@ -9,8 +9,9 @@ using ATM;
 
 namespace ATM
 {
-    public class PlaneTracker
+    public class PlaneTracker: IPlaneTracker
     {
+        public event EventHandler<PlaneListReadyEventArgs> PlaneListReady;
         private ITransponderReceiver _receiver;
         private List<Plane> _planes = new List<Plane>();
 
@@ -58,7 +59,18 @@ namespace ATM
             foreach (var data in e.TransponderData)
             {
                 _planes.Add(ConvertStringToPlane(data));
+
+
             }
+
+            PlaneListReadyEventArgs args = new PlaneListReadyEventArgs();
+            args.PlaneList = _planes;
+
+            PlaneListReady?.Invoke(this, args);
+            
         }
+
+        
+
     }
 }

@@ -53,10 +53,14 @@ namespace ATM.Unit.Test
         {
             List<String> planeStringlist = new List<string>();
             planeStringlist.Add("EIS771;5000;44789;6600;20190314094754096");
+            planeStringlist.Add("EIS772;5000;44789;6600;20190314094754096");
+            planeStringlist.Add("EIS773;5000;44789;6600;20190314094754096");
 
             _fakeReceiver.TransponderDataReady += Raise.EventWith(this, new RawTransponderDataEventArgs(planeStringlist));
 
             Assert.That(_uut.Planes[0].Tag, Is.EqualTo(_plane.Tag));
+            Assert.That(_uut.Planes[1].Tag, Is.EqualTo("EIS772"));
+            Assert.That(_uut.Planes[2].Tag, Is.EqualTo("EIS773"));
         }
     }
 }
