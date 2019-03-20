@@ -22,6 +22,8 @@ namespace ATM
 
         public double CompassCourse { get; set; }
 
+        public bool SeparationCondition { get; set; }
+
         public Plane(String tag, double positionX, double positionY, double altitude, DateTime timestamp)
         {
             Tag = tag;
