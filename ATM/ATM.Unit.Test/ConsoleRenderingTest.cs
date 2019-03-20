@@ -44,13 +44,10 @@ namespace ATM.Unit.Test
         [Test]
         public void PrintCanReturnTrue()
         {
-            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
-            _Plane1.SeparationCondition = true;
-            _planeList = new List<Plane>();
-            _planeList.Add(_Plane1);
-
-         
-            Assert.IsTrue(_Plane1.SeparationCondition);
+            ConsoleRendering Console_uut = new ConsoleRendering();
+            Console_uut.Seperation = true;
+            
+            Assert.IsTrue(_uut.Seperation);
         }
         
 
