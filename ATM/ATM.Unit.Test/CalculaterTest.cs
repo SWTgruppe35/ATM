@@ -24,15 +24,16 @@ namespace ATM.Unit.Test
         private Plane _Plane4;
         private Plane _Plane5;
 
-
-
-
+        private IAirSpaceMonitor Iasm = Substitute.For<IAirSpaceMonitor>();
+        private MonitorListReadyEventArgs monitorList;
+        private int _CalculatedListReadyEventRaised;
 
         [SetUp]
         public void Setup()
         {
-            _uut = new Calculator();
+            _uut = new Calculator(Iasm);
 
+            monitorList = new MonitorListReadyEventArgs(){PlaneList = new List<Plane>()};
         }
 
         [Test]
@@ -66,7 +67,7 @@ namespace ATM.Unit.Test
         [Test]
         public void TestComparePlanesList()
         {
-            var newlist = new Calculator()._planes;
+         //   var newlist = new Calculator()._planes;
             _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
             _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
@@ -83,7 +84,7 @@ namespace ATM.Unit.Test
         [Test]
         public void TestComparePlanesListfull()
         {
-            var newlist = new Calculator()._planes;
+          //  var newlist = new Calculator()._planes;
             _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
             _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
@@ -114,6 +115,16 @@ namespace ATM.Unit.Test
             Assert.That(_uut._planes.Contains(_Plane5));
         }
 
+        [Test]
+        public void CalculatedListReadyInvoked()
+        {
+            _CalculatedListReadyEventRaised = 0;
+            _uut.CalculatedListReady += (sender, args) => { ++_CalculatedListReadyEventRaised; };
+
+            Iasm.MonitorListReady += Raise.EventWith(this, monitorList);
+
+            Assert.AreEqual(1,_CalculatedListReadyEventRaised);
+        }
     }
 }
 
