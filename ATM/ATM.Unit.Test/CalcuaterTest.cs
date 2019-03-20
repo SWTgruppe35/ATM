@@ -11,7 +11,7 @@ using NSubstitute;
 namespace ATM.Unit.Test
 {
     [TestFixture]
-    public class ATMWithEventsUnitTests
+    public class CalcuaterTest
     {
         private Calculator _uut;
         private List<Plane> _newPlane;
