@@ -24,19 +24,19 @@ namespace ATM.Unit.Test
         {
             _uut = new ConsoleRendering();
         }
-
-        public void checkprint()
+        [Test]
+        public void Printplanescheckprint()
         {
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
             _planeList = new List<Plane>();
             _planeList.Add(_Plane1);
 
             var counter = 0;
-            var print = Substitute.For<ConsoleRendering>();
-            print.When(x => x.PrintPlanes(ref _planeList)).Do(x => counter++);
-
-            print.PrintPlanes(ref _planeList);
-            print.PrintPlanes(ref _planeList);
+            _uut = Substitute.For<ConsoleRendering>();
+            _uut.When(x => x.PrintPlanes(ref _planeList)).Do(x => counter++);
+     
+            _uut.PrintPlanes(ref _planeList);
+            _uut.PrintPlanes(ref _planeList);
             Assert.AreEqual(2, counter);
         }
         /*
