@@ -18,15 +18,15 @@ namespace ATM.Unit.Test
         private SeparationMonitor _uut;
 
         private ICalculator Ical = Substitute.For<ICalculator>();
-        private SeperationCalculatedEventArgs seperationList;
+        private CalculatedListReadyEventArgs calculatedList;
         private int _SeperationListReadyEventRaised; 
 
         [SetUp]
         public void Setup()
         {
             _uut = new SeparationMonitor(Ical);
-            seperationList = new SeperationCalculatedEventArgs();
-            seperationList.PlaneList=new List<Plane>();
+            calculatedList = new CalculatedListReadyEventArgs();
+            calculatedList.PlaneList=new List<Plane>();
 
             _plane1=new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _plane2=new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
@@ -177,7 +177,12 @@ namespace ATM.Unit.Test
 
         public void SeperationListReadyEventInvoked()
         {
+            _SeperationListReadyEventRaised = 0;
+            _uut.SeperationListReady += (sender, args) => { ++_SeperationListReadyEventRaised; };
 
+            Ical.CalculatedListReady += Raise.EventWith<CalculatedListReadyEventArgs>(this,calculatedList);
+
+            Assert.AreEqual(1,_SeperationListReadyEventRaised);
         }
 
     }
