@@ -67,7 +67,6 @@ namespace ATM.Unit.Test
         [Test]
         public void TestComparePlanesList()
         {
-         //   var newlist = new Calculator()._planes;
             _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
             _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
@@ -84,7 +83,6 @@ namespace ATM.Unit.Test
         [Test]
         public void TestComparePlanesListfull()
         {
-          //  var newlist = new Calculator()._planes;
             _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
             _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
