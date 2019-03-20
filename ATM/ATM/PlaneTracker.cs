@@ -20,16 +20,20 @@ namespace ATM
             _receiver.TransponderDataReady += TransponderReceiverDataReady;
         }
 
+        public List<Plane> Planes
+        {
+            get { return _planes; }
+        }
+
 
         public Plane ConvertStringToPlane(String planeString)
         {
             // Eksempel: Transponderdata EIS771;5000;44789;6600;20190314094754096
 
             List<string> planeDataList = planeString.Split(';').ToList<string>();
-            List<string> TextandTag = planeDataList[0].Split(' ').ToList<string>();
 
             var plane = new Plane(
-                            TextandTag[1],
+                            planeDataList[0],
                             double.Parse(planeDataList[1]),
                             double.Parse(planeDataList[2]),
                             double.Parse(planeDataList[3]),
