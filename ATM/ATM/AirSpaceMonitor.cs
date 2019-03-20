@@ -8,12 +8,23 @@ namespace ATM
 {
    public class AirSpaceMonitor: IAirSpaceMonitor
    {
-       public AirSpaceMonitor()
+       public event EventHandler<MonitorListReadyEventArgs> MonitorListReady;
+
+       public AirSpaceMonitor(IPlaneTracker ps)
        {
-           
+           ps.PlaneListReady += HandlePlaneListReady;
        }
-          
-        public List<Plane> Monitor(ref List<Plane> planes)
+
+       public void HandlePlaneListReady(object src, PlaneListReadyEventArgs planeList)
+       {
+           var monitorList = new MonitorListReadyEventArgs();
+
+           monitorList.PlaneList = Monitor(planeList.PlaneList);
+
+            MonitorListReady?.Invoke(this, monitorList);
+       }
+
+        public List<Plane> Monitor( List<Plane> planes)
         {
             for (int i = 0; i < planes.Count; i++)
             {
