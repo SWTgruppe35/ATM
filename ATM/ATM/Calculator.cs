@@ -49,6 +49,6 @@ namespace ATM
             planeNew.CompassCourse = Math.Atan(m);
         }
 
-        private List<Plane> _planes;
+        public List<Plane> _planes = new List<Plane>();
     }
 }
