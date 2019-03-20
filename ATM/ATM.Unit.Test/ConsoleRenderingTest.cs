@@ -10,32 +10,26 @@ using NUnit.Framework.Internal;
 
 namespace ATM.Unit.Test
 {
+    // Check if Prints in ConsoleRendering works and can run.
     [TestFixture]
     public class ConsoleRenderingTest
     {
-        private ConsoleRendering _uut;
         private Plane _Plane1;
         private List<Plane> _planeList;
 
-
-        [SetUp]
-
-        public void Setup()
-        {
-            _uut = new ConsoleRendering();
-        }
-        /*
-        [Test]
-        public void PrintAirplanes()
+        public void checkprint()
         {
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
             _planeList = new List<Plane>();
             _planeList.Add(_Plane1);
 
-            _uut.PrintPlanes(ref _planeList);
+            var counter = 0;
+            var print = Substitute.For<IRender>();
+            print.When(x => x.PrintPlanes(ref _planeList)).Do(x => counter++);
 
-            Assert.That(_uut.PrintPlanes(ref _planeList), Has.);
+            print.PrintPlanes(ref _planeList);
+            print.PrintPlanes(ref _planeList);
+            Assert.AreEqual(2, counter);
         }
-        */
     }
 }
