@@ -10,7 +10,6 @@ namespace ATM
     {
         void PrintPlanes(ref List<Plane> planes);
 
-        void PrintSpaceCollision(ref List<Plane> planes);
 
 
     }

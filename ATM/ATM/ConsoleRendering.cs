@@ -20,14 +20,14 @@ namespace ATM
                 Console.WriteLine(plane.HorizontalVelocity);
                 Console.WriteLine(plane.CompassCourse);
                 Console.WriteLine("Awaiting new plane...");
-            }
-        }
-
-        public void PrintSpaceCollision(ref List<Plane> planes)
-        {
-            foreach (var plane in planes)
-            {
-                Console.WriteLine("There is a nearby collision for " + plane.Tag + "!");
+                /*
+                if ()
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
+                    Console.ResetColor();
+                }
+                */
             }
         }
 
