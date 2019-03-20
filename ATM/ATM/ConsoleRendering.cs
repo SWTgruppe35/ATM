@@ -27,8 +27,7 @@ namespace ATM
         {
             foreach (var plane in planes)
             {
-                Console.WriteLine(plane);
-                
+                Console.WriteLine("There is a nearby collision for " + plane.Tag + "!");
             }
         }
 

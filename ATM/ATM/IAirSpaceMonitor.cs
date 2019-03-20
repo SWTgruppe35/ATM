@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-
     public interface IAirSpaceMonitor
     {
-     
-        List<Plane> Monitor(ref List<Plane> planes);
+        event EventHandler<MonitorListReadyEventArgs> MonitorListReady;
+    }
+
+    public class MonitorListReadyEventArgs : EventArgs
+    {
+        public List<Plane> PlaneList { get; set; }
     }
 }
