@@ -32,7 +32,6 @@ namespace ATM.Unit.Test
             }
 
             //Event raised test
-            _MonitorListReadyEventRaised = 0;
             _uut.MonitorListReady += (sender, args) => { ++_MonitorListReadyEventRaised; };
 
         }
@@ -82,6 +81,7 @@ namespace ATM.Unit.Test
         [Test]
         public void MonitorListReadyEventInvoked()
         {
+            _MonitorListReadyEventRaised = 0;
 
             Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
