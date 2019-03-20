@@ -26,7 +26,6 @@ namespace ATM
             get { return _planes; }
         }
 
-
         public Plane ConvertStringToPlane(String planeString)
         {
             // Eksempel: Transponderdata EIS771;5000;44789;6600;20190314094754096
@@ -59,8 +58,6 @@ namespace ATM
             foreach (var data in e.TransponderData)
             {
                 _planes.Add(ConvertStringToPlane(data));
-
-
             }
 
             PlaneListReadyEventArgs args = new PlaneListReadyEventArgs();
@@ -69,8 +66,5 @@ namespace ATM
             PlaneListReady?.Invoke(this, args);
             
         }
-
-        
-
     }
 }
