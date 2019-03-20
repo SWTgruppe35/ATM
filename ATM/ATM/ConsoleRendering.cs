@@ -20,14 +20,14 @@ namespace ATM
                 Console.WriteLine(plane.HorizontalVelocity);
                 Console.WriteLine(plane.CompassCourse);
                 Console.WriteLine("Awaiting new plane...");
-                /*
-                if ()
+                
+                if (plane.SeparationCondition == true)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
                     Console.ResetColor();
                 }
-                */
+                
             }
         }
 
