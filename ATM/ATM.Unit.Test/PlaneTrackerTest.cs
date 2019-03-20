@@ -16,7 +16,10 @@ namespace ATM.Unit.Test
         private ITransponderReceiver _fakeReceiver;
         private PlaneTracker _uut;
         private Plane _plane;
-        private DateTime _date; 
+        private List<String> _planeStringlist;
+        private DateTime _date;
+        private int _listReadySignal;
+
 
         [SetUp]
         public void Setup()
@@ -25,6 +28,7 @@ namespace ATM.Unit.Test
 
             _date = new DateTime(2019, 3, 14, 9, 47, 54, 096);
             _plane = new Plane("EIS771", 5000.0, 44789.0, 6600.0, _date);
+            _planeStringlist = new List<string>();
 
             _uut = new PlaneTracker(_fakeReceiver); 
         }
@@ -49,18 +53,28 @@ namespace ATM.Unit.Test
         }
 
         [Test]
-        public void ATM_RaiseEventOnNewTransponderData()
+        public void ATM_HandleEventOnNewTransponderData()
         {
-            List<String> planeStringlist = new List<string>();
-            planeStringlist.Add("EIS771;5000;44789;6600;20190314094754096");
-            planeStringlist.Add("EIS772;5000;44789;6600;20190314094754096");
-            planeStringlist.Add("EIS773;5000;44789;6600;20190314094754096");
+            _planeStringlist.Add("EIS771;5000;44789;6600;20190314094754096");
+            _planeStringlist.Add("EIS772;5000;44789;6600;20190314094754096");
+            _planeStringlist.Add("EIS773;5000;44789;6600;20190314094754096");
 
-            _fakeReceiver.TransponderDataReady += Raise.EventWith(this, new RawTransponderDataEventArgs(planeStringlist));
+            _fakeReceiver.TransponderDataReady += Raise.EventWith(this, new RawTransponderDataEventArgs(_planeStringlist));
 
             Assert.That(_uut.Planes[0].Tag, Is.EqualTo(_plane.Tag));
             Assert.That(_uut.Planes[1].Tag, Is.EqualTo("EIS772"));
             Assert.That(_uut.Planes[2].Tag, Is.EqualTo("EIS773"));
+        }
+
+        [Test]
+        public void ATM_RaiseEventOnPlaneListReady()
+        {
+            _listReadySignal = 0; 
+            _uut.PlaneListReady += (sender, args) => { ++_listReadySignal; };
+
+            _fakeReceiver.TransponderDataReady += Raise.EventWith(this, new RawTransponderDataEventArgs(_planeStringlist));
+
+            Assert.That(_listReadySignal, Is.EqualTo(1));
         }
     }
 }
