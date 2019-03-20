@@ -29,10 +29,7 @@ namespace ATM.Unit.Test
             for (var i = 0; i < 5; i++)
             {
                 planeList.PlaneList.Add(new Plane("Plane" + i.ToString(), 50000, 50000, 5000, DateTime.Now));
-            }
-
-            //Event raised test
-            _uut.MonitorListReady += (sender, args) => { ++_MonitorListReadyEventRaised; };
+            }  
 
         }
 
@@ -82,6 +79,7 @@ namespace ATM.Unit.Test
         public void MonitorListReadyEventInvoked()
         {
             _MonitorListReadyEventRaised = 0;
+            _uut.MonitorListReady += (sender, args) => { ++_MonitorListReadyEventRaised; };
 
             Ipt.PlaneListReady += Raise.EventWith(this, planeList);
 
