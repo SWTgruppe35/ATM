@@ -41,6 +41,7 @@ namespace ATM
         }
         public void PrintPlanes(List<Plane> planes)
         {
+            Console.Clear();
             foreach (var plane in planes)
             {
                 Console.WriteLine($"Plane with the following properties Tag:{plane.Tag} \t PositionX: {plane.PositionX} \t " +
@@ -53,6 +54,7 @@ namespace ATM
 
 
             }
+            
         }
 
         
