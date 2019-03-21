@@ -43,10 +43,10 @@ namespace ATM
         {
             Console.Clear();
 
-            Console.Write($"Number of planes in list: {planes.Count}");
+            Console.Write($"Number of planes in list: {planes.Count} \n");
             foreach (var plane in planes)
             {
-                Console.WriteLine($"Tag:{plane.Tag} \t X: {plane.PositionX} \t " +
+                Console.WriteLine($"Tag: {plane.Tag} \t X: {plane.PositionX} \t " +
                                   $"Y: {plane.PositionY} \t Z: {plane.Altitude} \t Time: {plane.Timestamp} \t Vel: {plane.HorizontalVelocity:F2}" +
                                   $"\t Course: {plane.CompassCourse:F2} ");
                Collision(Seperation, plane);

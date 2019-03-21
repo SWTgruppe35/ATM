@@ -48,6 +48,7 @@ namespace ATM.Unit.Test
             Assert.IsTrue(_uut.Seperation);
         }
 
+        /*
         [Test]
         public void SeperationListReadyEventHandled()
         {
@@ -62,6 +63,7 @@ namespace ATM.Unit.Test
 
             Im.SeperationListReady += Raise.EventWith(this, seperationList);
         }
+        */
 
 
     }
