@@ -42,6 +42,8 @@ namespace ATM
         public void PrintPlanes(List<Plane> planes)
         {
             Console.Clear();
+
+            Console.Write($"Number of planes in list: {planes.Count}");
             foreach (var plane in planes)
             {
                 Console.WriteLine($"Plane with the following properties Tag:{plane.Tag} \t PositionX: {plane.PositionX} \t " +
