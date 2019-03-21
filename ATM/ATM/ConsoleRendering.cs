@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSubstitute.Exceptions;
 
 namespace ATM
 {
@@ -23,21 +24,18 @@ namespace ATM
         }
 
         public bool Seperation;
-        public bool Collision(bool SeperationCondition, Plane plane)
+        public bool Collision(Plane plane)
         {
-            if (SeperationCondition == false)
+            if (plane.SeparationCondition == true)
             {
-                Seperation = false;
-                return Seperation;
-            }
-            else
-            {
-                Seperation = true;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
+                Console.WriteLine(
+                    "DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " +
+                    plane.Tag);
                 Console.ResetColor();
-                return Seperation;
+                return true;
             }
+            else return false;
         }
         public void PrintPlanes(List<Plane> planes)
         {
