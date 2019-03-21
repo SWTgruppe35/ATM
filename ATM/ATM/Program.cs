@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TransponderReceiver;
 
 namespace ATM
 {
     class Program
     {
 
-
         static void Main(string[] args)
         {
-            
-            Plane _PlaneTest = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
-            Plane _PlaneTest2 = new Plane("plane2", 70000, 20000, 18000, DateTime.Now);
-            Plane _PlaneTest3 = new Plane("plane2", 70000, 20000, 18000, DateTime.Now);
-            List<Plane> _PlaneList = new List<Plane>();
-            _PlaneList.Add(_PlaneTest);
-            _PlaneList.Add(_PlaneTest2);
-            _PlaneList.Add(_PlaneTest3);
-            var bist = new ConsoleRendering();
-            bist.PrintPlanes(_PlaneList);
-            
+            var reciever= TransponderReceiverFactory.CreateTransponderDataReceiver(); 
+
+            IPlaneTracker planeTracker = new PlaneTracker(reciever);
+
+            IAirSpaceMonitor airSpaceMonitor = new AirSpaceMonitor(planeTracker);
+
+            ICalculator calculator = new Calculator(airSpaceMonitor);
+
+            IMonitor monitor = new SeparationMonitor(calculator);
+
+            ConsoleRendering consoleRendering = new ConsoleRendering(monitor);
+
+            while (true)
+            {
+                
+            }
         }
 
 

@@ -17,12 +17,16 @@ namespace ATM.Unit.Test
         private Plane _Plane1;
         private List<Plane> _planeList;
 
+        private IMonitor Im = Substitute.For<IMonitor>();
+        private SeperationCalculatedEventArgs seperationList;
 
         [SetUp]
 
         public void Setup()
         {
-            _uut = new ConsoleRendering();
+            _uut = new ConsoleRendering(Im);
+
+            seperationList.PlaneList = new List<Plane>();
         }
 
         [Test]
@@ -48,8 +52,20 @@ namespace ATM.Unit.Test
             _uut.Collision(true, _Plane1);
             Assert.IsTrue(_uut.Seperation);
         }
-        
 
+        [Test]
+        public void SeperationListReadyEventHandled()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                seperationList.PlaneList.Add(new Plane($"test{i}", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)));
+
+                if (i % 2 == 0)
+                    seperationList.PlaneList[i].SeparationCondition = true;
+            }
+
+            Im.SeperationListReady += Raise.EventWith(this, seperationList);
+        }
 
 
     }
