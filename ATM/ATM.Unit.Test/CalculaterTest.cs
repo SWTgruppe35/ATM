@@ -14,8 +14,6 @@ namespace ATM.Unit.Test
     public class CalculaterTest
     {
         private Calculator _uut;
-        private List<Plane> _newPlane;
-        private List<Plane> _oldPlane;
         private List<Plane> planes;
         private List<Plane> planes1;
         private Plane _Plane1;
@@ -41,13 +39,15 @@ namespace ATM.Unit.Test
         {
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
 
-            _Plane2 = new Plane("tag2", 10000, 10000, 12000, DateTime.Now);
+            _Plane2 = new Plane("tag1", 10000, 10000, 12000, DateTime.Now);
 
             _uut.CalculateCourse(_Plane2, _Plane1);
             Assert.That(_Plane2.CompassCourse, Is.EqualTo(0));
 
 
         }
+
+
 
         [Test]
         public void CaculateVelocityisEqualto()

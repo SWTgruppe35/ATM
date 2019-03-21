@@ -37,7 +37,6 @@ namespace ATM
             for (int i=0; i<planes.Count;i++)
 
             {
-                bool planeWasConflicting = false;
                 for (int j=i+1; j < planes.Count; j++)
                 {
 
@@ -47,21 +46,12 @@ namespace ATM
                         newPlanes.Add(planes[j]);
                         LogPlane(planes[i]);
                         LogPlane(planes[j]);
-
-                        planeWasConflicting = true;
+                        planes[i].SeparationCondition = true;
+                        planes[j].SeparationCondition = true;
                     }
                 }
-
-                if (planeWasConflicting == false)
-                {
-                    planes[i].SeparationCondition = false;
-                }
-
             }
-
             _conflictingPlanes = newPlanes;
-
-            //somehow call render with new conflicting planes to render
         }
 
         public void LogPlane(Plane plane)
@@ -76,9 +66,7 @@ namespace ATM
             if (alreadyLogged == false)
             {
                 _logger.LogConflictingPlanes(plane);
-                plane.SeparationCondition = true;
             }
-            
         }
 
         public bool CheckIfConflict(Plane plane1, Plane plane2)

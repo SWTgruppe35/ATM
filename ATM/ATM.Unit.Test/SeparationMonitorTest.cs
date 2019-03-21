@@ -162,20 +162,6 @@ namespace ATM.Unit.Test
         }
 
         [Test]
-        public void SeparationConditionFalseCorrect()
-        {
-            _planes.Add(_plane1);
-            _planes.Add(_plane2);
-            _uut.FindConflictingPlanes(_planes);
-            List<Plane> _planeses = new List<Plane>();
-            _planeses.Add(_plane1);
-            _planeses.Add(_plane3);
-            _uut.FindConflictingPlanes(_planeses);
-
-            Assert.That(_plane2.SeparationCondition, Is.EqualTo(false));
-        }
-
-        [Test]
         public void SeperationListReadyEventInvoked()
         {
             _SeperationListReadyEventRaised = 0;

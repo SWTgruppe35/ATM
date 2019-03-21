@@ -9,10 +9,6 @@ namespace ATM
 {
     public class Logger: ILogger
     {
-        public Logger()
-        {
-            //_file=new StreamWriter(@"..\LogFile.txt", true);
-        }
         public void LogConflictingPlanes(Plane plane1)
         {
             _file = new StreamWriter(@"..\LogFile.txt", true);
