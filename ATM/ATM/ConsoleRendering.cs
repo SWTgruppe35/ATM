@@ -46,21 +46,13 @@ namespace ATM
             Console.Write($"Number of planes in list: {planes.Count}");
             foreach (var plane in planes)
             {
-                Console.WriteLine($"Plane with the following properties Tag:{plane.Tag} \t PositionX: {plane.PositionX} \t " +
-                                  $"PositionY: {plane.PositionY} \t Altitude: {plane.Altitude} \t TimeStamp: {plane.Timestamp} \t HorizontalVel: {plane.HorizontalVelocity}" +
-                                  $"\t CompassCourse: {plane.CompassCourse} ");
-                Console.WriteLine("Awaiting new plane...");
-
-                Collision(Seperation, plane);
-                
-
-
+                Console.WriteLine($"Tag:{plane.Tag} \t X: {plane.PositionX} \t " +
+                                  $"Y: {plane.PositionY} \t Z: {plane.Altitude} \t Time: {plane.Timestamp} \t Vel: {plane.HorizontalVelocity:F2}" +
+                                  $"\t Course: {plane.CompassCourse:F2} ");
+               Collision(Seperation, plane);
             }
             
         }
-
         
-
-    
     }
 }
