@@ -55,6 +55,7 @@ namespace ATM
 
         private void TransponderReceiverDataReady(object sender, RawTransponderDataEventArgs e)
         {
+            _planes.Clear();
             foreach (var data in e.TransponderData)
             {
                 _planes.Add(ConvertStringToPlane(data));
@@ -65,7 +66,7 @@ namespace ATM
 
             PlaneListReady?.Invoke(this, args);
             
-            _planes.Clear();
+            
         }
     }
 }
