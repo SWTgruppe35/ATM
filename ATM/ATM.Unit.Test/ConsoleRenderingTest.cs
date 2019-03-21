@@ -39,21 +39,23 @@ namespace ATM.Unit.Test
             
             Assert.Contains(_Plane1, _planeList);
         }
-        /*
+        
         [Test]
         public void PrintCanReturnTrue()
         {
-            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
-            
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)) {SeparationCondition = true};
+            _uut.Collision(_Plane1);
+            Assert.That(_uut.Collision(_Plane1), Is.True);
         }
 
         [Test]
         public void PrintCanReturnFalse()
         {
-            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
-            
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)) { SeparationCondition = false };
+            _uut.Collision(_Plane1);
+            Assert.That(_uut.Collision(_Plane1), Is.False);
         }
-        */
+        
 
         /*
         [Test]
