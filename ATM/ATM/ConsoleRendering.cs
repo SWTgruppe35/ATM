@@ -8,6 +8,20 @@ namespace ATM
 {
     public class ConsoleRendering : IRender
     {
+        public List<Plane> CopyPlaneList { get; set; }
+
+        public ConsoleRendering(IMonitor Im)
+        {
+            Im.SeperationListReady += HandleSeperationListReady;
+        }
+
+        public void HandleSeperationListReady(object src, SeperationCalculatedEventArgs args)
+        {
+            CopyPlaneList= new List<Plane>(args.PlaneList);
+
+            PrintPlanes(CopyPlaneList);
+        }
+
         public bool Seperation;
         public bool Collision(bool SeperationCondition, Plane plane)
         {
@@ -29,14 +43,9 @@ namespace ATM
         {
             foreach (var plane in planes)
             {
-                Console.WriteLine("Plane with the following properties");
-                Console.WriteLine(plane.Tag);
-                Console.WriteLine(plane.PositionX);
-                Console.WriteLine(plane.PositionY);
-                Console.WriteLine(plane.Altitude);
-                Console.WriteLine(plane.Timestamp);
-                Console.WriteLine(plane.HorizontalVelocity);
-                Console.WriteLine(plane.CompassCourse);
+                Console.WriteLine($"Plane with the following properties Tag:{plane.Tag} \t PositionX: {plane.PositionX} \t " +
+                                  $"PositionY: {plane.PositionY} \t Altitude: {plane.Altitude} \t TimeStamp: {plane.Timestamp} \t HorizontalVel: {plane.HorizontalVelocity}" +
+                                  $"\t CompassCourse: {plane.CompassCourse} ");
                 Console.WriteLine("Awaiting new plane...");
 
                 Collision(Seperation, plane);
