@@ -61,10 +61,11 @@ namespace ATM
             }
 
             PlaneListReadyEventArgs args = new PlaneListReadyEventArgs();
-            args.PlaneList = _planes;
+            args.PlaneList = new List<Plane>(_planes);
 
             PlaneListReady?.Invoke(this, args);
             
+            _planes.Clear();
         }
     }
 }
