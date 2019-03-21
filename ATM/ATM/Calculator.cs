@@ -61,11 +61,16 @@ namespace ATM
 
         public void CalculateCourse(Plane planeOld, Plane planeNew)
         {
-            double x = planeOld.PositionX - planeNew.PositionX;
-            double y = planeNew.PositionY - planeOld.PositionY;
-            double m = y / x;
+            double x = planeOld.PositionX - planeNew.PositionY;
+            double y = planeOld.PositionY - planeOld.PositionX;
+         
 
-            planeNew.CompassCourse = Math.Atan(m);
+            double radians = Math.Atan2(y, x);
+            double degrees = radians * 180 / (Math.PI);
+            degrees += 180;
+            degrees = 360 - degrees;
+
+            planeNew.CompassCourse = degrees;
         }
 
         public List<Plane> _planes = new List<Plane>();
