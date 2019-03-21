@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NSubstitute.Exceptions;
 
 namespace ATM
 {
-    public class ConsoleRendering : IRender
+    public class ConsoleRendering
     {
         public List<Plane> CopyPlaneList { get; set; }
 
@@ -21,24 +22,20 @@ namespace ATM
 
             PrintPlanes(CopyPlaneList);
         }
-        
+
         public bool Seperation;
-        public bool Collision(bool SeperationCondition, Plane plane)
+        public bool Collision(Plane plane)
         {
-            
-            if (SeperationCondition == false)
+            if (plane.SeparationCondition == true)
             {
-                Seperation = false;
-                return Seperation;
-            }
-            else
-            {
-                Seperation = true;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " + plane.Tag);
+                Console.WriteLine(
+                    "DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " +
+                    plane.Tag);
                 Console.ResetColor();
-                return Seperation;
+                return true;
             }
+            else return false;
         }
         public void PrintPlanes(List<Plane> planes)
         {
@@ -50,7 +47,7 @@ namespace ATM
                 Console.WriteLine($"Tag: {plane.Tag} \t X: {plane.PositionX} \t " +
                                   $"Y: {plane.PositionY} \t Z: {plane.Altitude} \t Time: {plane.Timestamp} \t Vel: {plane.HorizontalVelocity:F2}" +
                                   $"\t Course: {plane.CompassCourse:F2} ");
-               Collision(Seperation, plane);
+               Collision(plane);
             }
             
         }

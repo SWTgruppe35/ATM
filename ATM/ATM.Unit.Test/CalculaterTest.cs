@@ -78,6 +78,9 @@ namespace ATM.Unit.Test
 
             _uut.ComparePlanes(planes);
             Assert.That(_uut._planes.Contains(_Plane1));
+            Assert.That(_uut._planes.Contains(_Plane2));
+            Assert.That(_uut._planes.Contains(_Plane3));
+
         }
 
         [Test]
@@ -110,7 +113,10 @@ namespace ATM.Unit.Test
 
 
 
+            Assert.That(_uut._planes.Contains(_Plane1));
+            Assert.That(_uut._planes.Contains(_Plane4));
             Assert.That(_uut._planes.Contains(_Plane5));
+
         }
 
         [Test]
@@ -144,6 +150,41 @@ namespace ATM.Unit.Test
 
 
             Assert.That(_uut._planes.Count, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void TestCompareVelocity()
+        {
+            var _date1 = new DateTime(2019, 8, 8, 2, 4, 55);
+            var _date2 = new DateTime(2019, 8, 8, 2, 4, 54);
+
+            _Plane1 = new Plane("plane1", 3000, 2000, 18000, _date2);
+            _Plane2 = new Plane("plane2", 3000, 2000, 18200, _date2);
+            _Plane3 = new Plane("plane3", 3000, 2000, 17800, _date2);
+            planes = new List<Plane>();
+
+            planes.Add(_Plane1);
+            planes.Add(_Plane2);
+            planes.Add(_Plane3);
+
+            _uut.ComparePlanes(planes);
+
+            _Plane1 = new Plane("plane1", 1000, 2000, 18000, _date1);
+            _Plane2 = new Plane("plane2", 1000, 2000, 18200, _date1);
+            _Plane3 = new Plane("plane3", 1000, 2000, 17800, _date1);
+
+            List<Plane> planes2=new List<Plane>();
+            planes2.Add(_Plane1);
+            planes2.Add(_Plane2);
+            planes2.Add(_Plane3);
+
+            _uut.ComparePlanes(planes2);
+
+            Assert.That(_Plane1.HorizontalVelocity, Is.EqualTo(2000));
+            Assert.That(_Plane2.HorizontalVelocity, Is.EqualTo(2000));
+            Assert.That(_Plane3.HorizontalVelocity, Is.EqualTo(2000));
+
+
         }
 
         [Test]
