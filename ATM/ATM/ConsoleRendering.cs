@@ -21,10 +21,11 @@ namespace ATM
 
             PrintPlanes(CopyPlaneList);
         }
-
+        
         public bool Seperation;
         public bool Collision(bool SeperationCondition, Plane plane)
         {
+            
             if (SeperationCondition == false)
             {
                 Seperation = false;
