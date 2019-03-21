@@ -40,6 +40,8 @@ namespace ATM
                             CalculateVelocity(i,j);
                             CalculateCourse(j, i);
                         }
+
+                        break;
                     }
                 }
             }

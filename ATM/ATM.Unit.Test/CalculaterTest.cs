@@ -114,6 +114,39 @@ namespace ATM.Unit.Test
         }
 
         [Test]
+        public void TestComparePlanesListfullNumberOfPlanesInList()
+        {
+            _Plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
+            _Plane2 = new Plane("plane2", 50000, 20000, 18200, DateTime.Now);
+            _Plane3 = new Plane("plane1", 50000, 20000, 17800, DateTime.Now);
+            planes = new List<Plane>();
+
+            planes.Add(_Plane1);
+            planes.Add(_Plane2);
+            planes.Add(_Plane3);
+
+            _uut.ComparePlanes(planes);
+
+            _Plane4 = new Plane("plane4", 50000, 20000, 17800, DateTime.Now);
+            _Plane5 = new Plane("plane2", 50000, 20000, 17800, DateTime.Now);
+            planes1 = new List<Plane>();
+
+            planes.Add(_Plane4);
+            planes.Add(_Plane5);
+
+            planes1.Add(_Plane1);
+            planes1.Add(_Plane4);
+            planes1.Add(_Plane5);
+
+
+            _uut.ComparePlanes(planes1);
+
+
+
+            Assert.That(_uut._planes.Count, Is.EqualTo(3));
+        }
+
+        [Test]
         public void CalculatedListReadyInvoked()
         {
             _CalculatedListReadyEventRaised = 0;
