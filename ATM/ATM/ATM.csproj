@@ -67,6 +67,8 @@
     <Compile Include="ILogger.cs" />
     <Compile Include="IMonitor.cs" />
     <Compile Include="IPlaneTracker.cs" />
+    <Compile Include="IWriter.cs" />
+    <Compile Include="Writer.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Plane.cs" />
     <Compile Include="PlaneTracker.cs" />
