@@ -26,6 +26,7 @@ namespace ATM.Unit.Test
         {
             _uut = new ConsoleRendering(Im);
 
+            seperationList = new SeperationCalculatedEventArgs();
             seperationList.PlaneList = new List<Plane>();
         }
 
@@ -35,13 +36,7 @@ namespace ATM.Unit.Test
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
             _planeList = new List<Plane>();
             _planeList.Add(_Plane1);
-
-            var counter = 0;
-            _uut = Substitute.For<ConsoleRendering>();
-            _uut.When(x => x.PrintPlanes(_planeList)).Do(x => counter++);
-
-            _uut.PrintPlanes(_planeList);
-            _uut.PrintPlanes(_planeList);
+            
             Assert.Contains(_Plane1, _planeList);
         }
 
@@ -56,6 +51,7 @@ namespace ATM.Unit.Test
         [Test]
         public void SeperationListReadyEventHandled()
         {
+
             for (int i = 0; i < 4; i++)
             {
                 seperationList.PlaneList.Add(new Plane($"test{i}", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)));
