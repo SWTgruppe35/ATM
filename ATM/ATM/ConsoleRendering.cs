@@ -7,7 +7,7 @@ using NSubstitute.Exceptions;
 
 namespace ATM
 {
-    public class ConsoleRendering : IRender
+    public class ConsoleRendering
     {
         public List<Plane> CopyPlaneList { get; set; }
 
@@ -47,7 +47,7 @@ namespace ATM
                 Console.WriteLine($"Tag: {plane.Tag} \t X: {plane.PositionX} \t " +
                                   $"Y: {plane.PositionY} \t Z: {plane.Altitude} \t Time: {plane.Timestamp} \t Vel: {plane.HorizontalVelocity:F2}" +
                                   $"\t Course: {plane.CompassCourse:F2} ");
-               Collision(Seperation, plane);
+               Collision(plane);
             }
             
         }
