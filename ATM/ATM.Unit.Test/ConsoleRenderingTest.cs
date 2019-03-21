@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using NSubstitute.Core.Arguments;
 using NSubstitute.ReceivedExtensions;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
-/*
+
 namespace ATM.Unit.Test
 {
     [TestFixture]
@@ -28,7 +29,7 @@ namespace ATM.Unit.Test
         {
             writer = Substitute.For<IWriter>();
             _uut = new ConsoleRendering(Im, writer);
- 
+
             seperationList = new SeperationCalculatedEventArgs();
             seperationList.PlaneList = new List<Plane>();
         }
@@ -55,14 +56,14 @@ namespace ATM.Unit.Test
             _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2));
             _planeList = new List<Plane>();
             _planeList.Add(_Plane1);
-            
+
             Assert.Contains(_Plane1, _planeList);
         }
-        
+
         [Test]
         public void PrintCanReturnTrue()
         {
-            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)) {SeparationCondition = true};
+            _Plane1 = new Plane("tag1", 12000, 12000, 10000, DateTime.Now.AddSeconds(2)) { SeparationCondition = true };
             _uut.Collision(_Plane1);
             Assert.That(_uut.Collision(_Plane1), Is.True);
         }
@@ -74,12 +75,10 @@ namespace ATM.Unit.Test
             _uut.Collision(_Plane1);
             Assert.That(_uut.Collision(_Plane1), Is.False);
         }
-      
-        
 
 
-//    }
-    
-//}
 
-    
+
+    }
+
+}
