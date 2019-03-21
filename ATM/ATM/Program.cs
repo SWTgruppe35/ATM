@@ -22,7 +22,9 @@ namespace ATM
 
             IMonitor monitor = new SeparationMonitor(calculator);
 
-            ConsoleRendering consoleRendering = new ConsoleRendering(monitor);
+            IWriter writer = new Writer();
+
+            ConsoleRendering consoleRendering = new ConsoleRendering(monitor, writer);
 
             while (true)
             {

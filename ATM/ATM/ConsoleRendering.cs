@@ -9,10 +9,13 @@ namespace ATM
 {
     public class ConsoleRendering
     {
+       private IWriter writer;
+
         public List<Plane> CopyPlaneList { get; set; }
 
-        public ConsoleRendering(IMonitor Im)
+        public ConsoleRendering(IMonitor Im, IWriter wri)
         {
+            writer = wri;
             Im.SeperationListReady += HandleSeperationListReady;
         }
 
@@ -27,26 +30,23 @@ namespace ATM
         public bool Collision(Plane plane)
         {
             if (plane.SeparationCondition == true)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(
-                    "DANGER!!!!!!! HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE! Concerning plane: " +
-                    plane.Tag);
-                Console.ResetColor();
+            { 
+                writer.PrintWarningLine( "DANGER!!!!!!!HOLY SHIT POSSIBLE COLLISION A HEAD, PLEASE BE AWARE!Concerning plane: " +
+                plane.Tag);
+           
                 return true;
             }
             else return false;
         }
         public void PrintPlanes(List<Plane> planes)
         {
-            Console.Clear();
+            writer.ClearScreen();
 
-            Console.Write($"Number of planes in list: {planes.Count} \n");
+            writer.PrintLine($"Number of planes in list: {planes.Count}");
             foreach (var plane in planes)
             {
-                Console.WriteLine($"Tag: {plane.Tag} \t X: {plane.PositionX} \t " +
-                                  $"Y: {plane.PositionY} \t Z: {plane.Altitude} \t Time: {plane.Timestamp} \t Vel: {plane.HorizontalVelocity:F2}" +
-                                  $"\t Course: {plane.CompassCourse:F2} ");
+               writer.PrintPlane(plane);
+
                Collision(plane);
             }
             
