@@ -65,10 +65,19 @@ namespace ATM
             double c = planeNew.PositionX - planeOld.PositionX;
          
 
-            double radians = Math.Atan2(v, c);
+            double radians = Math.Atan2(v,c);
+
+            
             
 
-            planeNew.CompassCourse = ((radians + 0.5 * Math.PI) * 180) / Math.PI;
+            double _radians = ((radians + 0.5 * Math.PI) * 180) / Math.PI;
+
+            if (_radians < 0)
+            {
+                _radians += 360;
+            }
+
+            planeNew.CompassCourse = _radians;
         }
 
         public List<Plane> _planes = new List<Plane>();
