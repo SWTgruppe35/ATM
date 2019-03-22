@@ -12,7 +12,7 @@ namespace ATM.Unit.Test
     [TestFixture]
     class LoggerTest
     {
-        private ATM.ILogger _logger;
+        private ATM.ILogger _uut;
         private Plane _plane1;
         private Plane _plane2;
 
@@ -21,7 +21,7 @@ namespace ATM.Unit.Test
         public void Setup()
         {
             File.Delete(@"..\LogFile.txt");
-            _logger=new Logger();
+            _uut=new Logger();
             _plane1 = new Plane("plane1", 50000, 20000, 18000, DateTime.Now);
             _plane2 = new Plane("plane2", 50000, 20000, 18000, DateTime.Now);
 
@@ -30,7 +30,7 @@ namespace ATM.Unit.Test
         [Test]
         public void OnePlaneCorrectLogged()
         {
-            _logger.LogConflictingPlanes(_plane1);
+            _uut.LogConflictingPlanes(_plane1);
 
             Assert.That(System.IO.File.ReadAllText(@"..\LogFile.txt"), Is.EqualTo(_plane1.Tag + "\r\n"));
         }
@@ -38,8 +38,8 @@ namespace ATM.Unit.Test
         [Test]
         public void MultiplePlanesCorrectLogged()
         {
-            _logger.LogConflictingPlanes(_plane1);
-            _logger.LogConflictingPlanes(_plane2);
+            _uut.LogConflictingPlanes(_plane1);
+            _uut.LogConflictingPlanes(_plane2);
 
 
             Assert.That(System.IO.File.ReadAllText(@"..\LogFile.txt"), Is.EqualTo(_plane1.Tag + "\r\n"+_plane2.Tag + "\r\n"));
