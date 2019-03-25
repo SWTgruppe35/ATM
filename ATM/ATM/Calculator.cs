@@ -70,7 +70,7 @@ namespace ATM
             
             
 
-            double _radians = ((radians + 0.5 * Math.PI) * 180) / Math.PI;
+            double _radians = (((radians + 0.5 * Math.PI) * 180) / Math.PI)-90;
 
             if (_radians < 0)
             {
